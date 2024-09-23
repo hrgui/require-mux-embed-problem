@@ -1,17 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const root = document.getElementById("root");
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+window.addEventListener("error", (e) => {
+  //console.error(e);
+  root.innerHTML = "Could not require('mux-embed'), encountered this error: " + e.error.stack;
+});
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//document.write('importing mux-embed via require("mux-embed")...');
+root.innerHTML = "Trying to do require('mux-embed')";
+require("mux-embed");
+root.innerHTML = "SUCCESS!";
+//document.write("SUCCESS");
